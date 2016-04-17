@@ -2,35 +2,34 @@
 %global frameworkdir %{_libexecdir}/openshift/cartridges/php
 %global httpdconfdir /etc/openshift/cart.conf.d/httpd/php
 
-Name:          openshift-origin-cartridge-php
-Version: 1.35.2
+Name:          openshift-origin-cartridge-php7
+Version: 1.0.0
 Release:       1%{?dist}
 Summary:       Php cartridge
 Group:         Development/Languages
 License:       ASL 2.0
 URL:           https://www.openshift.com
-Source0:       http://mirror.openshift.com/pub/openshift-origin/source/%{name}/%{name}-%{version}.tar.gz
+#Source0:       http://mirror.openshift.com/pub/openshift-origin/source/%{name}/%{name}-%{version}.tar.gz
+Source0:       https://github.com/yukoff/%{name}/archive/master.zip
 Requires:      rubygem(openshift-origin-node)
 %if 0%{?fedora}%{?rhel} <= 6
-Requires:      php >= 5.3.2
-Requires:      php < 5.4
-Requires:      php54
-Requires:      php54-php
-Requires:      php54-php-pear
+Requires:      php >= 7.0.5
+Requires:      php70
+Requires:      php70-php
+Requires:      php70-php-pear
 %endif
 %if 0%{?fedora} >= 19
-Requires:      php >= 5.5
-Requires:      php < 5.6
+Requires:      php >= 7.0.5
 %endif
-Requires:      php
-Requires:      php-pear
-Provides:      openshift-origin-cartridge-php-5.3 = 2.0.0
-Obsoletes:     openshift-origin-cartridge-php-5.3 <= 1.99.9
+Requires:      php7
+Requires:      php7-pear
+Provides:      openshift-origin-cartridge-php-7.0 = 2.0.0
+Obsoletes:     openshift-origin-cartridge-php-7.0 <= 1.99.9
 BuildArch:     noarch
 
 
 %description
-PHP cartridge for openshift. (Cartridge Format V2)
+PHP7 cartridge for openshift. (Cartridge Format V2)
 
 %prep
 %setup -q
@@ -56,6 +55,9 @@ PHP cartridge for openshift. (Cartridge Format V2)
 
 
 %changelog
+* Sun Apr 17 2016 Yury Buldakov <yury.buldakov@gmail.com> 1.0.0-1
+- Switch to PHP7
+
 * Fri Oct 23 2015 Wesley Hearn <whearn@redhat.com> 1.35.2-1
 - Bumping cartridge versions (abhgupta@redhat.com)
 

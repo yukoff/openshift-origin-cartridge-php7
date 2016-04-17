@@ -1,0 +1,11 @@
+Import openshift-origin-cartridge-php from openshift/origin-server
+
+commit 48126b7ea24d60f240c1f9987364987d151f81c8
+Merge: 73197c2 05b750d
+Author: OpenShift Bot <dmcphers+openshiftbot@redhat.com>
+Date:   Fri Apr 15 17:26:36 2016 -0400
+
+    Merge pull request #6380 from dinhxuanvu/mysql-log
+    
+    Merged by openshift-bot
+

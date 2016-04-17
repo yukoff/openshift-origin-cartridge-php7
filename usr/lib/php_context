@@ -2,8 +2,7 @@
 
 function php_context {
   case $OPENSHIFT_PHP_VERSION in
-    5.3) eval $1 ;;
-    5.4) /usr/bin/scl enable php54 "$1" ;;
+    7.0) /usr/bin/scl enable php70 "$1" ;;
   esac
 }
 
@@ -12,11 +11,11 @@ function update_configuration {
   local path=${OPENSHIFT_PHP_DIR}phplib/pear/pear:${OPENSHIFT_HOMEDIR}.composer/vendor/bin
 
   case $OPENSHIFT_PHP_VERSION in
-    5.4)
+    7.0)
       # SCL bin_dir
-      path=$(path_append ${path:-:} $(dirname $(scl enable php54 "which php") | tr -d '\n'))
+      path=$(path_append ${path:-:} $(dirname $(scl enable php70 "which php") | tr -d '\n'))
 
-      local man_path=$(MANPATH="" scl enable php54 "printenv MANPATH")
+      local man_path=$(MANPATH="" scl enable php70 "printenv MANPATH")
       path_append ${MANPATH:-:} ${man_path:-:} > ${OPENSHIFT_PHP_DIR}env/MANPATH
       ;;
   esac
